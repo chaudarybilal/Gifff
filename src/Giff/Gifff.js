@@ -45,28 +45,28 @@ const Gifff = () => {
     }
   };
 
-  const handleInfinteScroll = async () => {
-    console.log("scrollHight" + document.documentElement.scrollHeight);
-    console.log("innerHeight" + window.innerHeight);
-    console.log("scrollTop" + document.documentElement.scrollTop);
-    try {
-      if (
-        window.innerHeight +
-        document.documentElement.scrollHeight +
-        document.documentElement.scrollTop
-      ) {
-        setOffset((prev) => prev + 10);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const handleInfinteScroll = async () => {
+  //   console.log("scrollHight" + document.documentElement.scrollHeight);
+  //   console.log("innerHeight" + window.innerHeight);
+  //   console.log("scrollTop" + document.documentElement.scrollTop);
+  //   try {
+  //     if (
+  //       window.innerHeight +
+  //       document.documentElement.scrollHeight +
+  //       document.documentElement.scrollTop
+  //     ) {
+  //       setOffset((prev) => prev + 10);
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
   useEffect(() => {
     onClickhandler();
   }, [offset]);
-  useEffect(() => {
-    window.addEventListener("scroll", handleInfinteScroll);
-  }, []);
+  // useEffect(() => {
+  //   window.addEventListener("scroll", handleInfinteScroll);
+  // }, []);
   return (
     <>
       <div className="title">
