@@ -1,6 +1,6 @@
 import React from "react";
 import "./Gifff.css";
-// import { FaCheckSquare } from "react-icons/fa";
+import { FaCheckSquare, FaRegTrashAlt } from "react-icons/fa";
 import { useState, useEffect } from "react";
 
 const Gifff = () => {
@@ -67,6 +67,7 @@ const Gifff = () => {
   // useEffect(() => {
   //   window.addEventListener("scroll", handleInfinteScroll);
   // }, []);
+  const savefun = () => {};
   return (
     <>
       <div className="title">
@@ -102,6 +103,9 @@ const Gifff = () => {
                       src={gif.images.downsized?.url}
                       alt=""
                     />
+                    <FaCheckSquare onSelect={savefun} />
+
+                    <FaRegTrashAlt />
                   </div>
                 </div>
               );
