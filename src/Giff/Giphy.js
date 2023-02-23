@@ -1,11 +1,16 @@
-import React from "react";
+import About from "./About";
 import "./Gifff.css";
 import { FaCheckSquare, FaRegTrashAlt } from "react-icons/fa";
-import { useState, useEffect } from "react";
+import { useState, useEffect, createContext } from "react";
 
-const Gifff = () => {
+const ContextData = createContext();
+
+const Giphy = () => {
   const [search, setSearch] = useState("");
-  const [gifs, setGifs] = useState([]);
+  const ContextProvider = ({ children }) => {
+    const [gifs, setGifs] = useState([]);
+  };
+
   const [loading, setLoading] = useState(false);
   const [offset, setOffset] = useState(100);
 
@@ -44,32 +49,13 @@ const Gifff = () => {
         });
     }
   };
-
-  // const handleInfinteScroll = async () => {
-  //   console.log("scrollHight" + document.documentElement.scrollHeight);
-  //   console.log("innerHeight" + window.innerHeight);
-  //   console.log("scrollTop" + document.documentElement.scrollTop);
-  //   try {
-  //     if (
-  //       window.innerHeight +
-  //       document.documentElement.scrollHeight +
-  //       document.documentElement.scrollTop
-  //     ) {
-  //       setOffset((prev) => prev + 10);
-  //     }
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
   useEffect(() => {
     onClickhandler();
   }, [offset]);
-  // useEffect(() => {
-  //   window.addEventListener("scroll", handleInfinteScroll);
-  // }, []);
-  const savefun = () => {};
+
   return (
     <>
+      <Context.Provider value={{ gifs, setGifs }}>{children}</Context.Provider>
       <div className="title">
         <h1>giphy search engine</h1>
       </div>
@@ -103,7 +89,7 @@ const Gifff = () => {
                       src={gif.images.downsized?.url}
                       alt=""
                     />
-                    <FaCheckSquare onSelect={savefun} />
+                    <FaCheckSquare />
 
                     <FaRegTrashAlt />
                   </div>
@@ -117,4 +103,6 @@ const Gifff = () => {
   );
 };
 
-export default Gifff;
+export default Giphy;
+export { ContextData };
+export { ContextProvider };

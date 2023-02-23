@@ -1,10 +1,10 @@
 import React from "react";
-import Gifff from "./Gifff";
+import Giphy from "./Giphy";
 
 const Home = () => {
   return (
     <>
-      <Gifff />
+      <Giphy />
     </>
   );
 };
