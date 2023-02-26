@@ -5,21 +5,17 @@ import Home from "./Giff/Home";
 import About from "./Giff/About";
 import Contact from "./Giff/Contact";
 import Header from "./Giff/Header";
-import { ContextProvider } from "./Giff/Giphy";
+import { useState } from "react";
+
 function App() {
+  const [favt, setfavt] = useState([]);
+
   return (
     <>
       <Header />
       <Routes>
-        <Route
-          path="/"
-          element={
-            <ContextProvider>
-              <Home />
-            </ContextProvider>
-          }
-        />
-        <Route path="about" element={<About />} />
+        <Route path="/" element={<Home favtdata={favt} setfavt={setfavt} />} />
+        <Route path="about" element={<About favtdata={favt} />} />
         <Route path="contact" element={<Contact />} />
       </Routes>
     </>

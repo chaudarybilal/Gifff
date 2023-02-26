@@ -1,15 +1,12 @@
 import About from "./About";
 import "./Gifff.css";
 import { FaCheckSquare, FaRegTrashAlt } from "react-icons/fa";
-import { useState, useEffect, createContext } from "react";
+import { useState, useEffect } from "react";
 
-const ContextData = createContext();
-
-const Giphy = () => {
+const Giphy = (props) => {
   const [search, setSearch] = useState("");
-  const ContextProvider = ({ children }) => {
-    const [gifs, setGifs] = useState([]);
-  };
+
+  const [gifs, setGifs] = useState([]);
 
   const [loading, setLoading] = useState(false);
   const [offset, setOffset] = useState(100);
@@ -52,10 +49,13 @@ const Giphy = () => {
   useEffect(() => {
     onClickhandler();
   }, [offset]);
+  console.log("gifsdata", gifs);
+  const addToFavt = (obj) => {
+    props.setfavt([...props.favtdata, obj]);
+  };
 
   return (
     <>
-      <Context.Provider value={{ gifs, setGifs }}>{children}</Context.Provider>
       <div className="title">
         <h1>giphy search engine</h1>
       </div>
@@ -89,7 +89,7 @@ const Giphy = () => {
                       src={gif.images.downsized?.url}
                       alt=""
                     />
-                    <FaCheckSquare />
+                    <FaCheckSquare onClick={() => addToFavt(gif)} />
 
                     <FaRegTrashAlt />
                   </div>
@@ -104,5 +104,3 @@ const Giphy = () => {
 };
 
 export default Giphy;
-export { ContextData };
-export { ContextProvider };

@@ -10,15 +10,11 @@ const Header = () => {
           GIPHY
         </a>
         <div class="header-right">
-          <a class="active" href="/">
-            <Link to="/home">Home</Link>
-          </a>
-          <a href="/">
-            <Link to="/about">Favourite</Link>
-          </a>
-          <a href="/">
-            <Link to="/contact">FeedBack</Link>
-          </a>
+          <Link to="/">Home</Link>
+
+          <Link to="/about">Favourite</Link>
+
+          <Link to="/contact">FeedBack</Link>
         </div>
       </div>
     </>
