@@ -5,7 +5,7 @@ import Home from "./Giff/Home";
 import About from "./Giff/About";
 import Contact from "./Giff/Contact";
 import Header from "./Giff/Header";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function App() {
   const [favt, setfavt] = useState([]);
@@ -15,7 +15,10 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home favtdata={favt} setfavt={setfavt} />} />
-        <Route path="about" element={<About favtdata={favt} />} />
+        <Route
+          path="about"
+          element={<About favtdata={favt} setfavt={setfavt} />}
+        />
         <Route path="contact" element={<Contact />} />
       </Routes>
     </>

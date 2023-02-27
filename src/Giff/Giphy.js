@@ -4,9 +4,17 @@ import { FaCheckSquare, FaRegTrashAlt } from "react-icons/fa";
 import { useState, useEffect } from "react";
 
 const Giphy = (props) => {
+  const getLocalItem = () => {
+    let list = localStorage.getItem("lists");
+    if (list) {
+      return JSON.parse(localStorage.getItem("lists"));
+    } else {
+      return [];
+    }
+  };
   const [search, setSearch] = useState("");
 
-  const [gifs, setGifs] = useState([]);
+  const [gifs, setGifs] = useState(getLocalItem());
 
   const [loading, setLoading] = useState(false);
   const [offset, setOffset] = useState(100);
@@ -49,15 +57,26 @@ const Giphy = (props) => {
   useEffect(() => {
     onClickhandler();
   }, [offset]);
+  useEffect(() => {
+    localStorage.setItem("lists", JSON.stringify(gifs));
+  }, [gifs]);
   console.log("gifsdata", gifs);
+
   const addToFavt = (obj) => {
     props.setfavt([...props.favtdata, obj]);
   };
+  // const deleteitem = (id) => {
+  //   props.setfavt((id) => {
+  //     return props.favtdata.filter((gif, index) => {
+  //       return index !== id;
+  //     });
+  //   });
+  // };
 
   return (
     <>
       <div className="title">
-        <h1>giphy search engine</h1>
+        <h1>giphy search engine </h1>
       </div>
       <div className="header">
         <div className="search-bar">
@@ -90,8 +109,7 @@ const Giphy = (props) => {
                       alt=""
                     />
                     <FaCheckSquare onClick={() => addToFavt(gif)} />
-
-                    <FaRegTrashAlt />
+                    {/* <FaRegTrashAlt onClick={() => deleteitem()} /> */}
                   </div>
                 </div>
               );

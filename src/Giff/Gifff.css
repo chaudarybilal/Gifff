@@ -64,18 +64,7 @@
     min-height:30px; 
     min-width: 120px;
 }
-.btn-3{
-    position:fixed;
-    top:90%;
-    left:1%;
-    background-color:#0a0a23;
-    color: #fff;
-    border:none; 
-    border-radius:10px; 
-    padding:15px;
-    min-height:30px; 
-    min-width: 120px;
-}
+
 .result{
     padding: 10px;
 }
@@ -116,10 +105,10 @@
         transform: rotate(360deg);
     }
 }
-/* .gif-sec{
+.gif-sec{
     width: auto;
     height: 70vh;
-} */
+}
 img{
     
     border: 10px solid white;
@@ -135,11 +124,12 @@ img{
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     grid-row-gap:2px; 
-    grid-gap: 30px;
-    align-items:flex-start;
+    grid-gap: 20px;
+    align-items:center;
 
 }
 
+  
 
   
 
