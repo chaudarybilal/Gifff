@@ -1,6 +1,7 @@
 import About from "./About";
+
 import "./Gifff.css";
-import { FaCheckSquare, FaRegTrashAlt } from "react-icons/fa";
+import { FaCheckSquare } from "react-icons/fa";
 import { useState, useEffect } from "react";
 
 const Giphy = (props) => {
@@ -9,7 +10,7 @@ const Giphy = (props) => {
     if (list) {
       return JSON.parse(localStorage.getItem("lists"));
     } else {
-      return [];
+      return [list];
     }
   };
   const [search, setSearch] = useState("");
@@ -65,32 +66,35 @@ const Giphy = (props) => {
   const addToFavt = (obj) => {
     props.setfavt([...props.favtdata, obj]);
   };
-  // const deleteitem = (id) => {
-  //   props.setfavt((id) => {
-  //     return props.favtdata.filter((gif, index) => {
-  //       return index !== id;
-  //     });
-  //   });
-  // };
+  const removeDataFromStorage = () => {
+    try {
+      localStorage.removeItem("lists");
+      props.setfavt([]);
+    } catch (error) {
+      console.log(error, "error");
+    }
+  };
 
   return (
     <>
-      <div className="title">
-        <h1>giphy search engine </h1>
-      </div>
-      <div className="header">
-        <div className="search-bar">
-          <input
-            type="text"
-            placeholder="ENTER TEXT HERE"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-          />
+      <div class="flexbox">
+        <div class="search">
+          <div>
+            <input
+              type="text"
+              placeholder="Search hare"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
+          </div>
         </div>
-        <button className="btn" onClick={onClickhandler}>
-          SEARCH HERE
-        </button>
+        <div className="btnn">
+          <button className="btn" onClick={onClickhandler}>
+            Click Me
+          </button>
+        </div>
       </div>
+
       <div className="result">
         {loading ? (
           <div className="loading">
@@ -109,7 +113,12 @@ const Giphy = (props) => {
                       alt=""
                     />
                     <FaCheckSquare onClick={() => addToFavt(gif)} />
-                    {/* <FaRegTrashAlt onClick={() => deleteitem()} /> */}
+                    <button
+                      className="btn-2"
+                      onClick={() => removeDataFromStorage(gif)}
+                    >
+                      Delete
+                    </button>
                   </div>
                 </div>
               );

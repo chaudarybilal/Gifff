@@ -6,15 +6,19 @@ const Header = () => {
   return (
     <>
       <div class="header">
-        <a href="#default" class="logo">
-          GIPHY
-        </a>
+        <div class="logo">
+          <h1>GIPHY</h1>
+        </div>
         <div class="header-right">
-          <Link to="/">Home</Link>
-
-          <Link to="/About">Favourite</Link>
-
-          <Link to="/contact">FeedBack</Link>
+          <Link to="/" className="active">
+            <div className="a">Home</div>
+          </Link>
+          <Link to="/About">
+            <div className="a">Favourite</div>
+          </Link>
+          <Link to="/contact">
+            <div className="a">FeedBack</div>
+          </Link>
         </div>
       </div>
     </>
