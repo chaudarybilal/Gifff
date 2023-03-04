@@ -10,7 +10,7 @@ const Giphy = (props) => {
     if (list) {
       return JSON.parse(localStorage.getItem("lists"));
     } else {
-      return [list];
+      return [];
     }
   };
   const [search, setSearch] = useState("");

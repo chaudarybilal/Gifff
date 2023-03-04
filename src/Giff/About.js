@@ -4,11 +4,11 @@ import "./About.css";
 
 const About = (props) => {
   const deleteitem = (gif) => {
-    props.setfavt((gif) => {
+    props.setfavt(() => {
       console.log("cliked");
       console.log(gif, "id");
-      return props.favtdata.filter((gif, idnex) => {
-        return gif !== idnex;
+      return props.favtdata.filter((id) => {
+        return gif !== id;
       });
     });
   };
